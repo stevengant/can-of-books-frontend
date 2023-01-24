@@ -24,15 +24,15 @@ Application will be built using React, MongoDB Atlas and Mongoose.
 
 ## Estimates
 
-Name of feature: ________________________________
+Name of feature: setup repos, setup db, setup book component
 
 Estimate of time needed to complete: 3 hours
 
 Start time: 1400
 
-Finish time: _____
+Finish time: 1800
 
-Actual time needed to complete: _____
+Actual time needed to complete: 4 hours
 
 ## Credit and Collaborations
 
