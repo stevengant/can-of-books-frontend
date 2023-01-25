@@ -11,6 +11,9 @@ import {
 import Profile from './About';
 
 class App extends React.Component {
+
+  
+
   render() {
     return (
       <>
@@ -28,7 +31,6 @@ class App extends React.Component {
             >
             </Route>
           </Routes>
-          {/* <Profile /> */}
           <Footer />
         </Router>
       </>
