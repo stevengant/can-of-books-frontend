@@ -81,3 +81,11 @@ Actual time needed to complete: 4 hours
 
 - How will you approach each other and the challenge of building an application knowing that it is impossible for two people to be at the exact same place in understanding and skill level?
   - Driver - Navigator method. Talk through issues.
+
+## Lab 12
+
+Name of feature: CREATE and DELETE of CRUD
+Estimate of time needed to complete: 3 hours
+Start time: 1400
+Finish time: _____
+Actual time needed to complete: _____
