@@ -56,6 +56,7 @@ class BestBooks extends React.Component {
 
     // TODO: post my cat to DB using my 2nd handler
     this.postBook(newBook);
+    this.handleCloseModal();
    }
 
    // *** 2nd Handler to post to DB
@@ -125,7 +126,7 @@ class BestBooks extends React.Component {
                 return(
                   <Carousel.Item key={idx}>
                   <img
-                    className='d-block w-100'
+                    className='d-block w-90'
                     src={bookElem.img_URL}
                     alt={bookElem.description}
                   />
