@@ -98,5 +98,5 @@ Actual time needed to complete: 4 hours
 + Name of feature: Update a Resource (book in database)
 + Estimate of time needed to complete: 3 hr
 + Start time: 1300
-+ Finish time: 
-+ Actual time needed to complete:  hr
++ Finish time: 1530
++ Actual time needed to complete: 2.5 hr
