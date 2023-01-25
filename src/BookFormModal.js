@@ -6,7 +6,7 @@ class BookFormModal extends React.Component {
         return (
             <>
                 <Modal show={this.props.showModal} onHide={this.props.handleCloseModal}>
-                    <Modal.Header closeButton>Add New Book</Modal.Header>
+                    <Modal.Header closeButton>📓 Add New Book 📓</Modal.Header>
                     <Modal.Body>
                         <Container className="mt-5">
                             <Form onSubmit={this.props.handleBookSubmit}>

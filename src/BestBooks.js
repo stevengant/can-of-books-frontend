@@ -2,13 +2,17 @@ import React from 'react';
 import axios from 'axios';
 import { Carousel, Button } from 'react-bootstrap';
 import BookFormModal from './BookFormModal.js'
+import BookUpdateModal from './BookUpdateModal.js'
+import './BestBooks.css'
 
 class BestBooks extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       books: [],
-      showModal: false
+      showModal: false,
+      showUdateModal: false,
+      bookToUpdate: {}
     }
   }
 
@@ -21,6 +25,18 @@ class BestBooks extends React.Component {
   handleCloseModal = () => {
     this.setState({
       showModal: false
+    });
+  }
+
+  handleOpenUpdateModal = () => {
+    this.setState({
+      showUdateModal: true,
+    });
+  }
+
+  handleCloseUpdateModal = () => {
+    this.setState({
+      showUdateModal: false
     });
   }
 
@@ -101,6 +117,32 @@ class BestBooks extends React.Component {
     }
    }
 
+
+   // ! UPDATE NEEDS THE WHOLE BOOK
+   updateBook = async (bookToUpdate) => {
+    try 
+    {
+      // TODO: URL SET FOR AXIOS
+      let url = `${process.env.REACT_APP_SERVER}/books/${bookToUpdate._id}`;
+
+      let updatedBook = await axios.put(url, bookToUpdate);
+
+      // TODO: UPDATE STATE WITH THAT RETURN FROM AXIOS
+      let updatedBookArr =this.state.books.map(existingBook => {
+        return existingBook._id === bookToUpdate._id ? updatedBook.data : existingBook;
+      });
+
+      this.setState({
+        books: updatedBookArr
+      });
+
+    } 
+    catch (error) 
+    {
+      console.log(error.message);
+    }
+   }
+
   // REACT LIFECYCLE METHOD
   componentDidMount() {
     this.getBooks();
@@ -113,11 +155,21 @@ class BestBooks extends React.Component {
     return (
       <>
         <h2>My Essential Lifelong Learning &amp; Formation Shelf</h2>
-        <Button onClick={this.handleOpenModal}>Add Book</Button>
+        <Button variant="dark" onClick={this.handleOpenModal}>➕ Book</Button>
+
         <BookFormModal 
           showModal ={this.state.showModal}
           handleCloseModal ={this.handleCloseModal}
           handleBookSubmit = {this.handleBookSubmit}
+        />
+
+        <BookUpdateModal 
+          showUdateModal ={this.state.showUdateModal}
+          handleCloseUpdateModal ={this.handleCloseUpdateModal}
+          handleBookSubmit = {this.handleBookSubmit}
+          bookToUpdate = {this.state.bookToUpdate}
+          updateBook = {this.updateBook}
+          
         />
 
         {this.state.books.length > 0 ? (
@@ -126,13 +178,13 @@ class BestBooks extends React.Component {
                 return(
                   <Carousel.Item key={idx}>
                   <img
-                    className='d-block w-90'
+                    className='d-block w-100'
                     src={bookElem.img_URL}
                     alt={bookElem.description}
                   />
                   <Carousel.Caption>
                     <h3 style={{
-                      backgroundColor: 'grey',
+                      backgroundColor: '#212529',
                       borderRadius: '5px',
                       width: 'max-content',
                       margin: 'auto',
@@ -141,7 +193,8 @@ class BestBooks extends React.Component {
                     >
                       {bookElem.title}
                     </h3>
-                    <Button onClick={()=>{this.deleteBook(bookElem._id)}}>Delete</Button>
+                    <Button variant="success" onClick={()=> {this.handleOpenUpdateModal(); this.setState({bookToUpdate: bookElem})}}>Update</Button>
+                    <Button variant="danger" onClick={()=>{this.deleteBook(bookElem._id)}}>Delete</Button>
                   </Carousel.Caption>
                   
                 </Carousel.Item>
