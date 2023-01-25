@@ -84,8 +84,8 @@ Actual time needed to complete: 4 hours
 
 ## Lab 12
 
-Name of feature: CREATE and DELETE of CRUD
-Estimate of time needed to complete: 3 hours
-Start time: 1400
-Finish time: _____
-Actual time needed to complete: _____
++ Name of feature: CREATE and DELETE of CRUD
++ Estimate of time needed to complete: 3 hr
++ Start time: 1400
++ Finish time: 1800
++ Actual time needed to complete: 4 hr
