@@ -79,6 +79,27 @@ class BestBooks extends React.Component {
     }
    }
 
+   deleteBook = async (id) => {
+    try {
+      // TODO: use axios to send the ID to the server on the path param
+      let url = `${process.env.REACT_APP_SERVER}/books/${id}`;
+      console.log(url);
+
+      await axios.delete(url);
+
+      // TODO: update state to remove the deleted cat
+      let updatedBooks = this.state.books.filter(book => book._id !== id);
+      console.log(updatedBooks);
+
+      this.setState({
+        books: updatedBooks
+      });
+    } 
+    catch (error) {
+      console.log(error.message)
+    }
+   }
+
   // REACT LIFECYCLE METHOD
   componentDidMount() {
     this.getBooks();
@@ -119,7 +140,9 @@ class BestBooks extends React.Component {
                     >
                       {bookElem.title}
                     </h3>
+                    <Button onClick={()=>{this.deleteBook(bookElem._id)}}>Delete</Button>
                   </Carousel.Caption>
+                  
                 </Carousel.Item>
                 );
 
